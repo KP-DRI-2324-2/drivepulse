@@ -14,81 +14,84 @@ class AuthView extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            "assets/images/logo-b.png",
-            width: 300,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(50.0),
-            child: Text(
-              "Log in to your account",
-              style: mediumText22,
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              "assets/images/logo-b.png",
+              width: 300,
             ),
-          ),
-          // Google
-          ElevatedButton(
-            onPressed: () {
-              toast("Loading...");
-              Future.delayed(const Duration(seconds: 1), (() {
-                Get.offAllNamed(Routes.MAIN);
-                toast("Welcome!");
-              }));
-            },
-            style: transparentButtonBlackBorder,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.circle,
-                    color: Colors.red,
+            Padding(
+              padding: const EdgeInsets.all(50.0),
+              child: Text(
+                "Log in to your account",
+                style: mediumText22,
+              ),
+            ),
+            // Google
+            ElevatedButton(
+              onPressed: () {
+                toast("Loading...");
+                Future.delayed(const Duration(seconds: 1), (() {
+                  Get.offAllNamed(Routes.MAIN);
+                  toast("Welcome!");
+                }));
+              },
+              style: transparentButtonBlackBorder,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.circle,
+                      color: Colors.red,
+                    ),
                   ),
-                ),
-                Text("Login with Google", style: mediumText14),
-              ],
+                  Text("Login with Google", style: mediumText14),
+                ],
+              ),
             ),
-          ),
-          // Facebook
-          ElevatedButton(
-            onPressed: () {},
-            style: transparentButtonBlackBorder,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.circle,
-                    color: Colors.blue,
+            // Facebook
+            ElevatedButton(
+              onPressed: () {},
+              style: transparentButtonBlackBorder,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.circle,
+                      color: Colors.blue,
+                    ),
                   ),
-                ),
-                Text("Login with Facebook", style: mediumText14),
-              ],
+                  Text("Login with Facebook", style: mediumText14),
+                ],
+              ),
             ),
-          ),
-          // Microsoft
-          ElevatedButton(
-            onPressed: () {},
-            style: transparentButtonBlackBorder,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.circle,
-                    color: Colors.green,
+            // Microsoft
+            ElevatedButton(
+              onPressed: () {},
+              style: transparentButtonBlackBorder,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.circle,
+                      color: Colors.green,
+                    ),
                   ),
-                ),
-                Text("Login with Microsoft", style: mediumText14),
-              ],
+                  Text("Login with Microsoft", style: mediumText14),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
