@@ -17,7 +17,10 @@ class AuthView extends GetView<AuthController> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset("assets/svg/logo-b.svg"),
+          Image.asset(
+            "assets/images/logo-b.png",
+            width: 300,
+          ),
           Padding(
             padding: const EdgeInsets.all(50.0),
             child: Text(

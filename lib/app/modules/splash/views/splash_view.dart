@@ -16,7 +16,7 @@ class SplashView extends GetView<SplashController> {
     }));
     return Scaffold(
       body: Center(
-        child: SvgPicture.asset("assets/svg/logo-a.svg"),
+        child: Image.asset("assets/images/logo-a.png"),
       ),
     );
   }
