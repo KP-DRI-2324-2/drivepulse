@@ -5,18 +5,21 @@ import 'package:get/get.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
-  const ProfileView({Key? key}) : super(key: key);
+  const ProfileView({super.key});
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(() => ProfileController());
     return Scaffold(
       appBar: AppBar(
         title: const Text('ProfileView'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'ProfileView is working',
-          style: TextStyle(fontSize: 20),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            controller.signOut();
+          },
+          child: const Text("Logout"),
         ),
       ),
     );

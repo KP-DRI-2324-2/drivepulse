@@ -1,6 +1,7 @@
 import 'package:drivepulse/app/common/theme/buttons.dart';
 import 'package:drivepulse/app/common/theme/fonts.dart';
 import 'package:drivepulse/app/routes/app_pages.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -13,6 +14,7 @@ class AuthView extends GetView<AuthController> {
   const AuthView({super.key});
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(() => AuthController());
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -32,12 +34,17 @@ class AuthView extends GetView<AuthController> {
             ),
             // Google
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
+                // Code here
                 toast("Loading...");
-                Future.delayed(const Duration(seconds: 1), (() {
+                toast("Loading...");
+                User? user = await controller.signInWithGoogle();
+                if (user != null) {
                   Get.offAllNamed(Routes.MAIN);
-                  toast("Welcome!");
-                }));
+                  toast("Welcome, ${user.displayName}!");
+                } else {
+                  toast("Google sign-in failed!");
+                }
               },
               style: transparentButtonBlackBorder,
               child: Row(
@@ -56,7 +63,9 @@ class AuthView extends GetView<AuthController> {
             ),
             // Facebook
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                // Code here
+              },
               style: transparentButtonBlackBorder,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
