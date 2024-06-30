@@ -35,13 +35,13 @@ class AuthView extends GetView<AuthController> {
             // Google
             ElevatedButton(
               onPressed: () async {
-                // Code here
-                toast("Loading...");
-                toast("Loading...");
                 User? user = await controller.signInWithGoogle();
                 if (user != null) {
-                  Get.offAllNamed(Routes.MAIN);
-                  toast("Welcome, ${user.displayName}!");
+                  toast("Loading. . .");
+                  Future.delayed(const Duration(seconds: 1), (() {
+                    Get.offAllNamed(Routes.MAIN);
+                    toast("Welcome, ${user.displayName}!");
+                  }));
                 } else {
                   toast("Google sign-in failed!");
                 }
@@ -50,14 +50,14 @@ class AuthView extends GetView<AuthController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.circle,
-                      color: Colors.red,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(
+                      "assets/svg/google.svg",
+                      height: 20,
                     ),
                   ),
-                  Text("Login with Google", style: mediumText14),
+                  Text("Login with Google", style: mediumText16),
                 ],
               ),
             ),
@@ -70,14 +70,14 @@ class AuthView extends GetView<AuthController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.circle,
-                      color: Colors.blue,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(
+                      "assets/svg/facebook.svg",
+                      height: 20,
                     ),
                   ),
-                  Text("Login with Facebook", style: mediumText14),
+                  Text("Login with Facebook", style: mediumText16),
                 ],
               ),
             ),
@@ -88,14 +88,14 @@ class AuthView extends GetView<AuthController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.circle,
-                      color: Colors.green,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(
+                      "assets/svg/microsoft.svg",
+                      height: 20,
                     ),
                   ),
-                  Text("Login with Microsoft", style: mediumText14),
+                  Text("Login with Microsoft", style: mediumText16),
                 ],
               ),
             ),

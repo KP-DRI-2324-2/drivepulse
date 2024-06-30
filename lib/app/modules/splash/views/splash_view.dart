@@ -1,7 +1,5 @@
-import 'package:drivepulse/app/common/theme/theme.dart';
 import 'package:drivepulse/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 
