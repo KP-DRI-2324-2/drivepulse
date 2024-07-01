@@ -1,6 +1,5 @@
 import 'package:drivepulse/app/common/theme/buttons.dart';
 import 'package:drivepulse/app/common/theme/fonts.dart';
-import 'package:drivepulse/app/common/theme/theme.dart';
 import 'package:drivepulse/app/modules/profile/controllers/profile_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
