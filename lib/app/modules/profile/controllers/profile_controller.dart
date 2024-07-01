@@ -5,9 +5,35 @@ import 'package:get/get.dart';
 class ProfileController extends GetxController {
   //TODO: Implement ProfileController
 
-  final count = 0.obs;
+  final userName = ''.obs;
+  final userPhotoUrl = ''.obs;
 
-  void increment() => count.value++;
+  final isEmailNotificationEnabled = false.obs;
+  final isAppNotificationEnabled = false.obs;
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  @override
+  void onInit() {
+    super.onInit();
+    _fetchUserData();
+  }
+
+  void _fetchUserData() {
+    User? user = _auth.currentUser;
+    if (user != null) {
+      userName.value = user.displayName ?? "Anonymous";
+      userPhotoUrl.value = user.photoURL ?? "";
+    }
+  }
+
+  void toggleEmailNotification(bool value) {
+    isEmailNotificationEnabled.value = value;
+  }
+
+  void toggleAppNotification(bool value) {
+    isAppNotificationEnabled.value = value;
+  }
 
   Future<void> signOut() async {
     try {
