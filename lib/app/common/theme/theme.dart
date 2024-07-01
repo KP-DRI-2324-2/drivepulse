@@ -4,9 +4,10 @@ ThemeData themeData = ThemeData(
   fontFamily: 'Poppins',
   scaffoldBackgroundColor: Colors.white,
   primarySwatch: Colors.blue,
-  primaryColor: const Color(0xFF54B9FC),
+  primaryColor: const Color(0xFFBF0000),
+  primaryColorDark: const Color(0xFF590000),
   highlightColor: const Color(0xFFFFFFFF),
-  canvasColor: const Color(0xFF182266),
+  canvasColor: Colors.grey[200],
   appBarTheme: const AppBarTheme(
     surfaceTintColor: Colors.transparent,
   ),

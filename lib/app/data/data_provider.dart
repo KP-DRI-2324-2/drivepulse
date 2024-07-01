@@ -10,7 +10,17 @@ List<ServicesModel> ServicesDataList() {
       image: "assets/images/logo-a.png",
       widget: MainView()));
   list.add(ServicesModel(
-      title: 'Monitoring',
+      title: 'Dashboard',
+      icon: Icons.circle,
+      image: "assets/images/logo-a.png",
+      widget: MainView()));
+  list.add(ServicesModel(
+      title: 'Line Chart',
+      icon: Icons.circle,
+      image: "assets/images/logo-a.png",
+      widget: MainView()));
+  list.add(ServicesModel(
+      title: 'Freeze Frame',
       icon: Icons.circle,
       image: "assets/images/logo-a.png",
       widget: MainView()));
@@ -20,17 +30,7 @@ List<ServicesModel> ServicesDataList() {
       image: "assets/images/logo-a.png",
       widget: MainView()));
   list.add(ServicesModel(
-      title: 'Monitoring',
-      icon: Icons.circle,
-      image: "assets/images/logo-a.png",
-      widget: MainView()));
-  list.add(ServicesModel(
-      title: 'Monitoring',
-      icon: Icons.circle,
-      image: "assets/images/logo-a.png",
-      widget: MainView()));
-  list.add(ServicesModel(
-      title: 'Monitoring',
+      title: 'More',
       icon: Icons.circle,
       image: "assets/images/logo-a.png",
       widget: MainView()));
