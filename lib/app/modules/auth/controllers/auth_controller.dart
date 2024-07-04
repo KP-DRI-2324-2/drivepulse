@@ -1,15 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:nb_utils/nb_utils.dart';
 
 class AuthController extends GetxController {
-  //TODO: Implement AuthController
-
-  final count = 0.obs;
-
-  void increment() => count.value++;
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 

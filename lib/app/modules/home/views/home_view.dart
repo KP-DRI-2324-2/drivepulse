@@ -1,6 +1,4 @@
-import 'package:drivepulse/app/common/theme/buttons.dart';
 import 'package:drivepulse/app/common/theme/fonts.dart';
-import 'package:drivepulse/app/common/theme/theme.dart';
 import 'package:drivepulse/app/data/data_provider.dart';
 import 'package:drivepulse/app/data/model/services_model.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +9,7 @@ import 'package:nb_utils/nb_utils.dart';
 
 import '../controllers/home_controller.dart';
 
+// ignore: must_be_immutable
 class HomeView extends GetView<HomeController> {
   HomeView({super.key});
   List<ServicesModel> data = ServicesDataList();
