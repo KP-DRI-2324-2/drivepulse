@@ -1,23 +1,32 @@
 import 'package:get/get.dart';
+import '../models/vehicle_model.dart';
 
 class VehiclelistController extends GetxController {
-  //TODO: Implement VehiclelistController
+  final vehicles = <Vehicle>[].obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void addVehicle(String vehicle, String manufacturer, String modelValue, int yearValue, String typeValue, int displacementValue) {
+    vehicles.add(Vehicle(
+      name: vehicle,
+      manufacturer: manufacturer,
+      model: modelValue,
+      year: yearValue,
+      type: typeValue,
+      displacement: displacementValue,
+    ));
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void editVehicle(int index, String vehicle, String manufacturer, String modelValue, int yearValue, String typeValue, int displacementValue) {
+    vehicles[index] = Vehicle(
+      name: vehicle,
+      manufacturer: manufacturer,
+      model: modelValue,
+      year: yearValue,
+      type: typeValue,
+      displacement: displacementValue,
+    );
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  void deleteVehicle(int index) {
+    vehicles.removeAt(index);
   }
-
-  void increment() => count.value++;
 }
