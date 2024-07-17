@@ -1,7 +1,6 @@
 import 'package:drivepulse/app/common/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:drivepulse/app/common/theme/buttons.dart';
 import 'package:drivepulse/app/common/theme/colors.dart';
 import 'package:drivepulse/app/common/theme/fonts.dart';
 import '../controllers/vehiclelist_controller.dart';
@@ -9,7 +8,7 @@ import 'vehiclelist_add_view.dart';
 import 'vehiclelist_edit_view.dart';
 
 class VehiclelistView extends GetView<VehiclelistController> {
-  const VehiclelistView({Key? key}) : super(key: key);
+  const VehiclelistView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -86,11 +85,11 @@ class VehiclelistView extends GetView<VehiclelistController> {
                             Expanded(
                                 child: _buildInfoChip('Year',
                                     '${controller.vehicles[index].year}')),
-                            SizedBox(width: 8),
+                            const SizedBox(width: 8),
                             Expanded(
                                 child: _buildInfoChip(
                                     'Type', controller.vehicles[index].type)),
-                            SizedBox(width: 8),
+                            const SizedBox(width: 8),
                             Expanded(
                                 child: _buildInfoChip('CC',
                                     '${controller.vehicles[index].displacement}')),
@@ -107,15 +106,15 @@ class VehiclelistView extends GetView<VehiclelistController> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.to(() => AddVehiclePage()),
-        child: const Icon(Icons.add),
         backgroundColor: kColorScheme.onPrimary,
+        child: const Icon(Icons.add),
       ),
     );
   }
 
   Widget _buildInfoChip(String label, String value) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       decoration: BoxDecoration(
         color: kColorScheme.secondary,
         borderRadius: BorderRadius.circular(20),
@@ -145,8 +144,6 @@ class VehiclelistView extends GetView<VehiclelistController> {
               },
             ),
             ElevatedButton(
-              child:
-                  Text('Yes', style: regularText14.copyWith(color: Colors.white)),
               onPressed: () {
                 controller.deleteVehicle(index);
                 Navigator.of(context).pop();
@@ -154,6 +151,8 @@ class VehiclelistView extends GetView<VehiclelistController> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red,
               ),
+              child: Text('Yes',
+                  style: regularText14.copyWith(color: Colors.white)),
             ),
           ],
         );

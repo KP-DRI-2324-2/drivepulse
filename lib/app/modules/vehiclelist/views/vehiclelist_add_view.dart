@@ -13,6 +13,8 @@ class AddVehiclePage extends StatelessWidget {
   final TextEditingController typeController = TextEditingController();
   final TextEditingController displacementController = TextEditingController();
 
+  AddVehiclePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +34,7 @@ class AddVehiclePage extends StatelessWidget {
                   labelStyle: regularText16,
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               TextField(
                 controller: manufacturerController,
                 decoration: InputDecoration(
@@ -40,7 +42,7 @@ class AddVehiclePage extends StatelessWidget {
                   labelStyle: regularText16,
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               TextField(
                 controller: modelController,
                 decoration: InputDecoration(
@@ -48,7 +50,7 @@ class AddVehiclePage extends StatelessWidget {
                   labelStyle: regularText16,
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               TextFormField(
                 controller: yearController,
                 keyboardType: TextInputType.number,
@@ -57,7 +59,7 @@ class AddVehiclePage extends StatelessWidget {
                   labelStyle: regularText16,
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               TextField(
                 controller: typeController,
                 decoration: InputDecoration(
@@ -65,7 +67,7 @@ class AddVehiclePage extends StatelessWidget {
                   labelStyle: regularText16,
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               TextFormField(
                 controller: displacementController,
                 keyboardType: TextInputType.number,
@@ -74,9 +76,9 @@ class AddVehiclePage extends StatelessWidget {
                   labelStyle: regularText16,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
-                style: primary300Button,
+                style: primaryButton,
                 child: Text('Confirm', style: semiBoldText14),
                 onPressed: () {
                   String vehicleName = vehicleNameController.text;
@@ -84,13 +86,15 @@ class AddVehiclePage extends StatelessWidget {
                   String model = modelController.text;
                   int year = int.tryParse(yearController.text) ?? 0;
                   String type = typeController.text;
-                  int displacement = int.tryParse(displacementController.text) ?? 0;
+                  int displacement =
+                      int.tryParse(displacementController.text) ?? 0;
 
-                  controller.addVehicle(vehicleName, manufacturer, model, year, type, displacement);
+                  controller.addVehicle(vehicleName, manufacturer, model, year,
+                      type, displacement);
                   Get.back();
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
             ],
           ),
         ),

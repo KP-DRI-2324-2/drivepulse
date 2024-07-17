@@ -14,14 +14,17 @@ class EditVehiclePage extends GetView<VehiclelistController> {
   late final TextEditingController _typeController;
   late final TextEditingController _displacementController;
 
-  EditVehiclePage({required this.index}) {
+  EditVehiclePage({super.key, required this.index}) {
     Vehicle vehicleToEdit = controller.vehicles[index];
     _vehicleNameController = TextEditingController(text: vehicleToEdit.name);
-    _manufacturerController = TextEditingController(text: vehicleToEdit.manufacturer);
+    _manufacturerController =
+        TextEditingController(text: vehicleToEdit.manufacturer);
     _modelController = TextEditingController(text: vehicleToEdit.model);
-    _yearController = TextEditingController(text: vehicleToEdit.year.toString());
+    _yearController =
+        TextEditingController(text: vehicleToEdit.year.toString());
     _typeController = TextEditingController(text: vehicleToEdit.type);
-    _displacementController = TextEditingController(text: vehicleToEdit.displacement.toString());
+    _displacementController =
+        TextEditingController(text: vehicleToEdit.displacement.toString());
   }
 
   @override
@@ -43,7 +46,7 @@ class EditVehiclePage extends GetView<VehiclelistController> {
                   labelStyle: regularText16,
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               TextField(
                 controller: _manufacturerController,
                 decoration: InputDecoration(
@@ -51,7 +54,7 @@ class EditVehiclePage extends GetView<VehiclelistController> {
                   labelStyle: regularText16,
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               TextField(
                 controller: _modelController,
                 decoration: InputDecoration(
@@ -59,7 +62,7 @@ class EditVehiclePage extends GetView<VehiclelistController> {
                   labelStyle: regularText16,
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               TextFormField(
                 controller: _yearController,
                 keyboardType: TextInputType.number,
@@ -68,7 +71,7 @@ class EditVehiclePage extends GetView<VehiclelistController> {
                   labelStyle: regularText16,
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               TextField(
                 controller: _typeController,
                 decoration: InputDecoration(
@@ -76,7 +79,7 @@ class EditVehiclePage extends GetView<VehiclelistController> {
                   labelStyle: regularText16,
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               TextFormField(
                 controller: _displacementController,
                 keyboardType: TextInputType.number,
@@ -85,9 +88,9 @@ class EditVehiclePage extends GetView<VehiclelistController> {
                   labelStyle: regularText16,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
-                style: primary300Button,
+                style: primaryButton,
                 child: Text('Save', style: semiBoldText14),
                 onPressed: () {
                   String vehicleName = _vehicleNameController.text;
@@ -95,13 +98,15 @@ class EditVehiclePage extends GetView<VehiclelistController> {
                   String model = _modelController.text;
                   int year = int.tryParse(_yearController.text) ?? 0;
                   String type = _typeController.text;
-                  int displacement = int.tryParse(_displacementController.text) ?? 0;
+                  int displacement =
+                      int.tryParse(_displacementController.text) ?? 0;
 
-                  controller.editVehicle(index, vehicleName, manufacturer, model, year, type, displacement);
+                  controller.editVehicle(index, vehicleName, manufacturer,
+                      model, year, type, displacement);
                   Get.back();
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
             ],
           ),
         ),
