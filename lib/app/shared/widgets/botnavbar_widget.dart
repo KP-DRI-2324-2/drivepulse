@@ -20,7 +20,7 @@ class BotNavBarWidget extends StatelessWidget {
       type: BottomNavigationBarType.fixed,
       currentIndex: currentIndex,
       onTap: onTap,
-      selectedItemColor: themeData.canvasColor,
+      selectedItemColor: themeData.primaryColorDark,
       unselectedItemColor: Colors.grey,
       showSelectedLabels: true,
       showUnselectedLabels: true,

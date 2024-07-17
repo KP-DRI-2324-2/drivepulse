@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "290756666298",
+    "project_id": "drivepulse-71a4a",
+    "storage_bucket": "drivepulse-71a4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290756666298:android:6b37213f37e557dd60f383",
+        "android_client_info": {
+          "package_name": "com.kp23242.drivepulse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "290756666298-mkihhfnub1t98t906tscdgvffg043ppg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kp23242.drivepulse",
+            "certificate_hash": "783eea94789a1c46ed3e27cdefec2b6b01352528"
+          }
+        },
+        {
+          "client_id": "290756666298-pibcp2si9innmaat8gieli5dk7t069ue.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0YH43ivRDMc0pK9_ZlNK-yOvX-znBv4c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "290756666298-pibcp2si9innmaat8gieli5dk7t069ue.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "290756666298-0plsfev6pjuqq4sd4gv423ir6hs59j24.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.drivepulse.drivepulse"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

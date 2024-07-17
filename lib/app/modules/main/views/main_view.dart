@@ -21,10 +21,10 @@ class MainView extends GetView<MainController> {
           body: Center(
             child: IndexedStack(
               index: controller.tabIndex,
-              children: const [
+              children: [
                 HomeView(),
-                VehiclelistView(),
-                ProfileView(),
+                const VehiclelistView(),
+                const ProfileView(),
               ],
             ),
           ),
