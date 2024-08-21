@@ -15,7 +15,8 @@ class VehiclelistView extends GetView<VehiclelistController> {
     Get.lazyPut(() => VehiclelistController());
     return Scaffold(
       appBar: AppBar(
-        title: Text('Vehicle List', style: boldText24),
+        title: Text('Vehicle List', style: boldText22.copyWith(color: Colors.white)),
+        backgroundColor: const Color(0xFFBF0000),
         centerTitle: true,
       ),
       body: GetBuilder<VehiclelistController>(
