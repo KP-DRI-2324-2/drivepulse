@@ -1,4 +1,5 @@
 import 'package:drivepulse/app/data/model/services_model.dart';
+import 'package:drivepulse/app/modules/home/views/dashboard_view.dart';
 import 'package:drivepulse/app/modules/main/views/main_view.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ List<ServicesModel> ServicesDataList() {
       title: 'Dashboard',
       icon: Icons.circle,
       image: "assets/images/logo-a.png",
-      widget: MainView()));
+      widget: const DashboardView()));
   list.add(ServicesModel(
       title: 'Line Chart',
       icon: Icons.circle,
