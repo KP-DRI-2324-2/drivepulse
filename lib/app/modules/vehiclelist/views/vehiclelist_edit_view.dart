@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/vehiclelist_controller.dart';
-import '../models/vehicle_model.dart';
+import '../../../data/model/vehicle_model.dart';
 import 'package:drivepulse/app/common/theme/buttons.dart';
 import 'package:drivepulse/app/common/theme/fonts.dart';
 

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import '../models/vehicle_model.dart';
+import '../../../data/model/vehicle_model.dart';
 
 class VehiclelistController extends GetxController {
   final vehicles = <Vehicle>[].obs;
