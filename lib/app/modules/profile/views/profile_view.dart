@@ -1,6 +1,7 @@
 import 'package:drivepulse/app/common/theme/buttons.dart';
 import 'package:drivepulse/app/common/theme/fonts.dart';
 import 'package:drivepulse/app/modules/profile/controllers/profile_controller.dart';
+import 'package:drivepulse/app/modules/profile/views/editprofile_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,9 +14,10 @@ class ProfileView extends GetView<ProfileController> {
   Widget build(BuildContext context) {
     Get.lazyPut(() => ProfileController());
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        backgroundColor: const Color(0xFFBF0000),
+        backgroundColor: Colors.transparent,
         title: Text(
           'Profile',
           style: boldText22.copyWith(color: Colors.white),
@@ -29,7 +31,7 @@ class ProfileView extends GetView<ProfileController> {
             Stack(
               children: [
                 Container(
-                  height: 220,
+                  height: 300,
                   margin: const EdgeInsets.only(bottom: 16.0),
                   decoration: boxDecorationWithRoundedCorners(
                     gradient: const LinearGradient(
@@ -47,34 +49,37 @@ class ProfileView extends GetView<ProfileController> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: double.infinity,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Obx(() {
-                        String photoUrl = controller.userPhotoUrl.value;
-                        return CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          radius: 70,
-                          backgroundImage: photoUrl.isNotEmpty
-                              ? NetworkImage(photoUrl)
-                              : null,
-                          child: photoUrl.isEmpty
-                              ? const Icon(Icons.person,
-                                  size: 70, color: Colors.white)
-                              : null,
-                        );
-                      }),
-                      const SizedBox(height: 16),
-                      Obx(() {
-                        String name = controller.userName.value;
-                        return Text(
-                          name,
-                          style: boldText22.copyWith(color: Colors.white),
-                        );
-                      }),
-                    ],
+                Padding(
+                  padding: const EdgeInsets.only(top: 80.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Obx(() {
+                          String photoUrl = controller.userPhotoUrl.value;
+                          return CircleAvatar(
+                            backgroundColor: Colors.grey,
+                            radius: 70,
+                            backgroundImage: photoUrl.isNotEmpty
+                                ? NetworkImage(photoUrl)
+                                : null,
+                            child: photoUrl.isEmpty
+                                ? const Icon(Icons.person,
+                                    size: 70, color: Colors.white)
+                                : null,
+                          );
+                        }),
+                        const SizedBox(height: 16),
+                        Obx(() {
+                          String name = controller.userName.value;
+                          return Text(
+                            name,
+                            style: boldText22.copyWith(color: Colors.white),
+                          );
+                        }),
+                      ],
+                    ),
                   ),
                 )
               ],
@@ -92,7 +97,9 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                   const SizedBox(height: 8.0),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(const EditProfileView());
+                    },
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 4.0),
                       child: Row(

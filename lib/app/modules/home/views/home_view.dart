@@ -2,7 +2,6 @@ import 'package:drivepulse/app/common/theme/fonts.dart';
 import 'package:drivepulse/app/data/data_provider.dart';
 import 'package:drivepulse/app/data/model/services_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
