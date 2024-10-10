@@ -91,7 +91,8 @@ class EditVehiclePage extends GetView<VehiclelistController> {
               const SizedBox(height: 20),
               ElevatedButton(
                 style: primaryButton,
-                child: Text('Save', style: semiBoldText14),
+                child: Text('Save',
+                    style: semiBoldText14.copyWith(color: Colors.white)),
                 onPressed: () {
                   String vehicleName = _vehicleNameController.text;
                   String manufacturer = _manufacturerController.text;

@@ -3,6 +3,7 @@ import 'package:drivepulse/app/data/data_provider.dart';
 import 'package:drivepulse/app/data/model/freezeframe_model.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class FreezeFrameView extends StatelessWidget {
   FreezeFrameView({super.key});
   List<FreezeFrameModel> freezeFrameList = getFreezeFrameList();
@@ -44,48 +45,47 @@ class FreezeFrameView extends StatelessWidget {
             ),
           ),
           Table(
-              columnWidths: const {
-                0: FixedColumnWidth(50),
-                1: FlexColumnWidth(),
-                2: FixedColumnWidth(70),
-              },
-              border: const TableBorder(
+            columnWidths: const {
+              0: FixedColumnWidth(50),
+              1: FlexColumnWidth(),
+              2: FixedColumnWidth(70),
+            },
+            border: const TableBorder(
                 horizontalInside: BorderSide(width: 1, color: Colors.black),
-                bottom: BorderSide(width: 1, color: Colors.black)
+                bottom: BorderSide(width: 1, color: Colors.black)),
+            children: [
+              TableRow(
+                decoration: BoxDecoration(color: themeData.highlightColor),
+                children: const [
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                    child: Text(
+                      'PID',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                    child: Text(
+                      'Description',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                    child: Text(
+                      'Value',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
               ),
-              children: [
-                TableRow(
-                  decoration: BoxDecoration(color: themeData.highlightColor),
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8.0),
-                      child: Text(
-                        'PID',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8.0),
-                      child: Text(
-                        'Description',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8.0),
-                      child: Text(
-                        'Value',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                ),
-                for (var item in freezeFrameList) buildTableRow(item),
-              ],
-            ),
+              for (var item in freezeFrameList) buildTableRow(item),
+            ],
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -93,7 +93,10 @@ class FreezeFrameView extends StatelessWidget {
           // Handle download button press
         },
         backgroundColor: themeData.primaryColor,
-        child: Icon(Icons.download, color: themeData.highlightColor,),
+        child: Icon(
+          Icons.download,
+          color: themeData.highlightColor,
+        ),
       ),
     );
   }

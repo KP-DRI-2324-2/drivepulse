@@ -1,11 +1,11 @@
 import 'package:drivepulse/app/common/theme/fonts.dart';
-import 'package:drivepulse/app/modules/home/views/add_seensor_page.dart';
+import 'package:drivepulse/app/modules/home/views/add_sensor_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../components/linechartwidget.dart';
 
 class LineChartView extends StatelessWidget {
-  LineChartView({Key? key}) : super(key: key);
+  LineChartView({super.key});
 
   final ValueNotifier<bool> isSeparatedChart = ValueNotifier<bool>(true);
 
@@ -70,7 +70,7 @@ class LineChartView extends StatelessWidget {
 }
 
 class SeparatedChartView extends StatelessWidget {
-  const SeparatedChartView({Key? key}) : super(key: key);
+  const SeparatedChartView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +100,7 @@ class SeparatedChartView extends StatelessWidget {
 }
 
 class CombinedChartView extends StatelessWidget {
-  const CombinedChartView({Key? key}) : super(key: key);
+  const CombinedChartView({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -85,7 +85,8 @@ class HomeView extends GetView<HomeController> {
                         padding: const EdgeInsets.only(top: 20, bottom: 20.0),
                         child: Column(
                           children: [
-                            Icon(e.icon!, color: themeData.primaryColor,size: 28),
+                            Icon(e.icon!,
+                                color: themeData.primaryColor, size: 28),
                             8.height,
                             Text(e.title.toString(),
                                 style: boldTextStyle(size: 12),
@@ -94,7 +95,13 @@ class HomeView extends GetView<HomeController> {
                         ),
                       ).onTap(
                         () {
-                          e.widget.launch(context);
+                          if (e.title.toString() != 'More') {
+                            e.widget.launch(context);
+                          } else {
+                            // fix more widget
+                            Get.snackbar("Mohon maaf",
+                                "Fitur sedang dalam pengembangan");
+                          }
                         },
                       );
                     },
@@ -110,8 +117,28 @@ class HomeView extends GetView<HomeController> {
             alignment: Alignment.center,
             decoration: boxDecorationRoundedWithShadow(12,
                 backgroundColor: Colors.grey),
-            child: const SizedBox(
-              height: 300,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        "assets/images/carperformance.png",
+                        height: 150,
+                      ),
+                    ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        "assets/images/carperformance.jpeg",
+                        height: 150,
+                        width: 100,
+                      ),
+                    ),
+                  ],
+                )
+              ],
             ),
           ),
         ],

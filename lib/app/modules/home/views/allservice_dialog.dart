@@ -2,8 +2,8 @@ import 'package:drivepulse/app/common/theme/fonts.dart';
 import 'package:drivepulse/app/common/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-class AllServiceView extends StatelessWidget {
-  const AllServiceView({super.key});
+class AllServiceDialog extends StatelessWidget {
+  const AllServiceDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
