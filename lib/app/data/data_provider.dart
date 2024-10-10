@@ -1,7 +1,11 @@
+import 'package:drivepulse/app/data/model/freezeframe_model.dart';
 import 'package:drivepulse/app/data/model/services_model.dart';
 import 'package:drivepulse/app/data/model/sensor_model.dart';
+import 'package:drivepulse/app/modules/home/views/allservice_view.dart';
+import 'package:drivepulse/app/modules/home/views/freezeframe_view.dart';
 import 'package:drivepulse/app/modules/home/views/line_chart_view.dart';
 import 'package:drivepulse/app/modules/home/views/dashboard_view.dart';
+import 'package:drivepulse/app/modules/home/views/monitoring_view.dart';
 import 'package:drivepulse/app/modules/main/views/main_view.dart';
 import 'package:flutter/material.dart';
 
@@ -9,35 +13,46 @@ List<ServicesModel> ServicesDataList() {
   List<ServicesModel> list = [];
   list.add(ServicesModel(
       title: 'Monitoring',
-      icon: Icons.circle,
+      icon: Icons.monitor,
       image: "assets/images/logo-a.png",
-      widget: MainView()));
+      widget: const MonitoringView()));
   list.add(ServicesModel(
       title: 'Dashboard',
-      icon: Icons.circle,
+      icon: Icons.dashboard,
       image: "assets/images/logo-a.png",
       widget: const DashboardView()));
   list.add(ServicesModel(
       title: 'Line Chart',
-      icon: Icons.circle,
-      image: "assets/images/Line_Chart.png",
+      icon: Icons.show_chart,
+      image: "assets/images/Line_Chart.png", // TODO: - ganti jadi icon
       widget: LineChartView()));
   list.add(ServicesModel(
       title: 'Freeze Frame',
-      icon: Icons.circle,
+      icon: Icons.analytics,
       image: "assets/images/logo-a.png",
-      widget: MainView()));
+      widget: FreezeFrameView()));
   list.add(ServicesModel(
       title: 'Monitoring',
-      icon: Icons.circle,
+      icon: Icons.monitor,
       image: "assets/images/logo-a.png",
       widget: MainView()));
   list.add(ServicesModel(
       title: 'More',
-      icon: Icons.circle,
+      icon: Icons.more_horiz,
       image: "assets/images/logo-a.png",
-      widget: MainView()));
+      widget: Builder(  // Using Builder to access the correct context for showDialog
+    builder: (BuildContext context) {
+      return AllServiceView();
+    }
+  )));
   return list;
+}
+
+List<FreezeFrameModel> getFreezeFrameList() {
+return [
+    FreezeFrameModel(pid: '01', description: 'Diag 1', value: '600'),
+    FreezeFrameModel(pid: '11', description: 'Diag 2', value: '600'),
+  ];
 }
 
 List<SensorModel> getSensorList() {

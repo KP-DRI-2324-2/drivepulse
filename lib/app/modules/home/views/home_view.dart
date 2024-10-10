@@ -1,4 +1,5 @@
 import 'package:drivepulse/app/common/theme/fonts.dart';
+import 'package:drivepulse/app/common/theme/theme.dart';
 import 'package:drivepulse/app/data/data_provider.dart';
 import 'package:drivepulse/app/data/model/services_model.dart';
 import 'package:flutter/material.dart';
@@ -84,8 +85,7 @@ class HomeView extends GetView<HomeController> {
                         padding: const EdgeInsets.only(top: 20, bottom: 20.0),
                         child: Column(
                           children: [
-                            Image.asset(e.image!,
-                                width: 28, height: 28, fit: BoxFit.fill),
+                            Icon(e.icon!, color: themeData.primaryColor,size: 28),
                             8.height,
                             Text(e.title.toString(),
                                 style: boldTextStyle(size: 12),
