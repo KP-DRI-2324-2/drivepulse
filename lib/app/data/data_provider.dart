@@ -40,16 +40,16 @@ List<ServicesModel> ServicesDataList() {
       title: 'More',
       icon: Icons.more_horiz,
       image: "assets/images/logo-a.png",
-      widget: Builder(  // Using Builder to access the correct context for showDialog
-    builder: (BuildContext context) {
-      return AllServiceView();
-    }
-  )));
+      widget:
+          Builder(// Using Builder to access the correct context for showDialog
+              builder: (BuildContext context) {
+        return const AllServiceView();
+      })));
   return list;
 }
 
 List<FreezeFrameModel> getFreezeFrameList() {
-return [
+  return [
     FreezeFrameModel(pid: '01', description: 'Diag 1', value: '600'),
     FreezeFrameModel(pid: '11', description: 'Diag 2', value: '600'),
   ];
