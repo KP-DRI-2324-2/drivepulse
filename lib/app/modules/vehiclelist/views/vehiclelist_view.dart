@@ -15,7 +15,8 @@ class VehiclelistView extends GetView<VehiclelistController> {
     Get.lazyPut(() => VehiclelistController());
     return Scaffold(
       appBar: AppBar(
-        title: Text('Vehicle List', style: boldText22.copyWith(color: Colors.white)),
+        title: Text('Vehicle List',
+            style: boldText22.copyWith(color: Colors.white)),
         backgroundColor: const Color(0xFFBF0000),
         centerTitle: true,
       ),
@@ -28,7 +29,7 @@ class VehiclelistView extends GetView<VehiclelistController> {
                 return Card(
                   margin:
                       const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                  color: AppColors.primaryColors[3],
+                  color: const Color(0xFFBF0000),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -40,8 +41,7 @@ class VehiclelistView extends GetView<VehiclelistController> {
                             Expanded(
                               child: Text(
                                 '${controller.vehicles[index].name} (${controller.vehicles[index].manufacturer})',
-                                style: boldText22.copyWith(
-                                    color: themeData.primaryColorDark),
+                                style: boldText22.copyWith(color: Colors.white),
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
@@ -50,9 +50,10 @@ class VehiclelistView extends GetView<VehiclelistController> {
                                 Text(
                                   'Series ${controller.vehicles[index].model}',
                                   style: semiBoldText18.copyWith(
-                                      color: themeData.canvasColor),
+                                      color: Colors.white),
                                 ),
                                 PopupMenuButton<String>(
+                                  iconColor: Colors.white,
                                   onSelected: (value) {
                                     if (value == 'Edit') {
                                       Get.to(
@@ -107,8 +108,11 @@ class VehiclelistView extends GetView<VehiclelistController> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.to(() => AddVehiclePage()),
-        backgroundColor: kColorScheme.onPrimary,
-        child: const Icon(Icons.add),
+        backgroundColor: const Color(0xFFBF0000),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }
@@ -117,13 +121,13 @@ class VehiclelistView extends GetView<VehiclelistController> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       decoration: BoxDecoration(
-        color: kColorScheme.secondary,
+        color: Colors.red,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
         children: [
-          Text(label, style: regularText12.copyWith(color: Colors.black)),
-          Text(value, style: boldText14.copyWith(color: Colors.black)),
+          Text(label, style: regularText12.copyWith(color: Colors.white)),
+          Text(value, style: boldText14.copyWith(color: Colors.white)),
         ],
       ),
     );
@@ -150,7 +154,7 @@ class VehiclelistView extends GetView<VehiclelistController> {
                 Navigator.of(context).pop();
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
+                backgroundColor: const Color(0xFFBF0000),
               ),
               child: Text('Yes',
                   style: regularText14.copyWith(color: Colors.white)),

@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:drivepulse/app/data/model/sensor_model.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class AddSensorPage extends StatelessWidget {
-  AddSensorPage({Key? key}) : super(key: key);
+  AddSensorPage({super.key});
   List<SensorModel> sensorList = getSensorList();
 
   @override
@@ -27,7 +28,7 @@ class AddSensorPage extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: 'Search by title of PID',
                       hintStyle: regularText16.copyWith(color: Colors.grey),
-                      prefixIcon: Icon(Icons.search),
+                      prefixIcon: const Icon(Icons.search),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -36,14 +37,14 @@ class AddSensorPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Container(
                   decoration: BoxDecoration(
                     color: Colors.grey[200],
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: IconButton(
-                    icon: Icon(Icons.filter_list),
+                    icon: const Icon(Icons.filter_list),
                     onPressed: () {
                       // Handle filter action
                     },
@@ -51,7 +52,7 @@ class AddSensorPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Expanded(
               child: ListView.builder(
                 itemCount: sensorList.length,
@@ -63,11 +64,8 @@ class AddSensorPage extends StatelessWidget {
                     padding: const EdgeInsets.all(5.0),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius:
-                          BorderRadius.circular(8.0),
-                      border: Border.all(
-                          color: Colors.grey,
-                          width: 0.5),
+                      borderRadius: BorderRadius.circular(8.0),
+                      border: Border.all(color: Colors.grey, width: 0.5),
                     ),
                     child: ListTile(
                       title: Text(sensor.name, style: regularText18),
