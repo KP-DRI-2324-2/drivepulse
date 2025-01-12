@@ -1,6 +1,8 @@
+import 'package:drivepulse/app/common/theme/fonts.dart';
 import 'package:drivepulse/app/common/theme/theme.dart';
 import 'package:drivepulse/app/data/data_provider.dart';
 import 'package:drivepulse/app/data/model/freezeframe_model.dart';
+import 'package:drivepulse/app/shared/widgets/adbanner_widget.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -14,7 +16,10 @@ class FreezeFrameView extends StatelessWidget {
       appBar: AppBar(
         foregroundColor: themeData.highlightColor,
         backgroundColor: themeData.primaryColor,
-        title: const Text('Freeze Frame'),
+        title: Text(
+          'Freeze Frame',
+          style: boldText22.copyWith(color: themeData.highlightColor),
+        ),
         centerTitle: true,
       ),
       body: Column(
@@ -86,6 +91,8 @@ class FreezeFrameView extends StatelessWidget {
               for (var item in freezeFrameList) buildTableRow(item),
             ],
           ),
+          const Spacer(),
+          const AdBannerWidget(),
         ],
       ),
       floatingActionButton: FloatingActionButton(

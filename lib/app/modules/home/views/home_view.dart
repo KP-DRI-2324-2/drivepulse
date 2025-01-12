@@ -116,24 +116,17 @@ class HomeView extends GetView<HomeController> {
             transform: Matrix4.translationValues(0, 16.0, 0),
             alignment: Alignment.center,
             decoration: boxDecorationRoundedWithShadow(12,
-                backgroundColor: Colors.grey),
+                backgroundColor: Colors.black),
             child: Column(
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.asset(
                         "assets/images/carperformance.png",
                         height: 150,
-                      ),
-                    ),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        "assets/images/carperformance.jpeg",
-                        height: 150,
-                        width: 100,
                       ),
                     ),
                   ],
