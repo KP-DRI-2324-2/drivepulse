@@ -18,6 +18,9 @@ dependencies:
   google_sign_in: ^6.2.1
   syncfusion_flutter_gauges: ^26.1.42
   syncfusion_flutter_charts: ^26.1.42
+  flutter_launcher_icons: ^0.14.2
+  flutter_native_splash: ^2.4.4
+  rename_app: ^1.6.2
 
 dev_dependencies:
   flutter_lints: 4.0.0
@@ -31,3 +34,31 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/svg/
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/images/logo-b.png
+  android_12:
+    image: assets/images/logo-b.png
+    color: "#FFFFFF"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  adaptive_icon_background: "#FFFFFF"
+  ios: true
+  remove_alpha_ios: true
+  background_color_ios: "#FFFFFF"
+  image_path: "assets/images/logo-a.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/splash.png"
+    background_color: "#FFFFFF"
+    theme_color: "#FFFFFF"
+  windows:
+    generate: true
+    image_path: "assets/splash.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/splash.png"

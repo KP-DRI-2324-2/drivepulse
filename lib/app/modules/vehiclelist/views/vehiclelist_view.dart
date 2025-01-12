@@ -40,7 +40,7 @@ class VehiclelistView extends GetView<VehiclelistController> {
                           children: [
                             Expanded(
                               child: Text(
-                                '${controller.vehicles[index].name} (${controller.vehicles[index].manufacturer})',
+                                controller.vehicles[index].name,
                                 style: boldText22.copyWith(color: Colors.white),
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -48,7 +48,7 @@ class VehiclelistView extends GetView<VehiclelistController> {
                             Row(
                               children: [
                                 Text(
-                                  'Series ${controller.vehicles[index].model}',
+                                  controller.vehicles[index].model,
                                   style: semiBoldText18.copyWith(
                                       color: Colors.white),
                                 ),
