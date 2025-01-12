@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/vehiclelist_controller.dart';
+import '../../../data/model/vehicle_model.dart';
 import 'package:drivepulse/app/common/theme/buttons.dart';
 import 'package:drivepulse/app/common/theme/fonts.dart';
 
@@ -81,16 +82,34 @@ class AddVehiclePage extends StatelessWidget {
                 style: primaryButton,
                 child: Text('Confirm', style: semiBoldText14),
                 onPressed: () {
-                  String vehicleName = vehicleNameController.text;
-                  String manufacturer = manufacturerController.text;
-                  String model = modelController.text;
+                  String vehicleName = vehicleNameController.text.trim();
+                  String manufacturer = manufacturerController.text.trim();
+                  String model = modelController.text.trim();
                   int year = int.tryParse(yearController.text) ?? 0;
-                  String type = typeController.text;
+                  String type = typeController.text.trim();
                   int displacement =
                       int.tryParse(displacementController.text) ?? 0;
 
-                  controller.addVehicle(vehicleName, manufacturer, model, year,
-                      type, displacement);
+                  if (vehicleName.isEmpty ||
+                      manufacturer.isEmpty ||
+                      model.isEmpty ||
+                      year == 0 ||
+                      type.isEmpty ||
+                      displacement == 0) {
+                    Get.snackbar('Error', 'Please fill all fields correctly');
+                    return;
+                  }
+
+                  Vehicle newVehicle = Vehicle(
+                    name: vehicleName,
+                    manufacturer: manufacturer,
+                    model: model,
+                    year: year,
+                    type: type,
+                    displacement: displacement,
+                  );
+
+                  controller.addVehicle(newVehicle);
                   Get.back();
                 },
               ),

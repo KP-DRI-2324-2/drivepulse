@@ -5,26 +5,31 @@ import '../../../data/model/vehicle_model.dart';
 import 'package:drivepulse/app/common/theme/buttons.dart';
 import 'package:drivepulse/app/common/theme/fonts.dart';
 
-class EditVehiclePage extends GetView<VehiclelistController> {
+class EditVehiclePage extends StatelessWidget {
+  final VehiclelistController controller = Get.find();
   final int index;
-  late final TextEditingController _vehicleNameController;
-  late final TextEditingController _manufacturerController;
-  late final TextEditingController _modelController;
-  late final TextEditingController _yearController;
-  late final TextEditingController _typeController;
-  late final TextEditingController _displacementController;
+  final String vehicleId;
+  final TextEditingController _vehicleNameController;
+  final TextEditingController _manufacturerController;
+  final TextEditingController _modelController;
+  final TextEditingController _yearController;
+  final TextEditingController _typeController;
+  final TextEditingController _displacementController;
 
-  EditVehiclePage({super.key, required this.index}) {
+  EditVehiclePage({super.key, required this.index, required this.vehicleId})
+      : _vehicleNameController = TextEditingController(),
+        _manufacturerController = TextEditingController(),
+        _modelController = TextEditingController(),
+        _yearController = TextEditingController(),
+        _typeController = TextEditingController(),
+        _displacementController = TextEditingController() {
     Vehicle vehicleToEdit = controller.vehicles[index];
-    _vehicleNameController = TextEditingController(text: vehicleToEdit.name);
-    _manufacturerController =
-        TextEditingController(text: vehicleToEdit.manufacturer);
-    _modelController = TextEditingController(text: vehicleToEdit.model);
-    _yearController =
-        TextEditingController(text: vehicleToEdit.year.toString());
-    _typeController = TextEditingController(text: vehicleToEdit.type);
-    _displacementController =
-        TextEditingController(text: vehicleToEdit.displacement.toString());
+    _vehicleNameController.text = vehicleToEdit.name;
+    _manufacturerController.text = vehicleToEdit.manufacturer;
+    _modelController.text = vehicleToEdit.model;
+    _yearController.text = vehicleToEdit.year.toString();
+    _typeController.text = vehicleToEdit.type;
+    _displacementController.text = vehicleToEdit.displacement.toString();
   }
 
   @override
@@ -94,16 +99,34 @@ class EditVehiclePage extends GetView<VehiclelistController> {
                 child: Text('Save',
                     style: semiBoldText14.copyWith(color: Colors.white)),
                 onPressed: () {
-                  String vehicleName = _vehicleNameController.text;
-                  String manufacturer = _manufacturerController.text;
-                  String model = _modelController.text;
+                  String vehicleName = _vehicleNameController.text.trim();
+                  String manufacturer = _manufacturerController.text.trim();
+                  String model = _modelController.text.trim();
                   int year = int.tryParse(_yearController.text) ?? 0;
-                  String type = _typeController.text;
+                  String type = _typeController.text.trim();
                   int displacement =
                       int.tryParse(_displacementController.text) ?? 0;
 
-                  controller.editVehicle(index, vehicleName, manufacturer,
-                      model, year, type, displacement);
+                  if (vehicleName.isEmpty ||
+                      manufacturer.isEmpty ||
+                      model.isEmpty ||
+                      year == 0 ||
+                      type.isEmpty ||
+                      displacement == 0) {
+                    Get.snackbar('Error', 'Please fill all fields correctly');
+                    return;
+                  }
+
+                  Vehicle updatedVehicle = Vehicle(
+                    name: vehicleName,
+                    manufacturer: manufacturer,
+                    model: model,
+                    year: year,
+                    type: type,
+                    displacement: displacement,
+                  );
+
+                  controller.editVehicle(vehicleId, updatedVehicle);
                   Get.back();
                 },
               ),
