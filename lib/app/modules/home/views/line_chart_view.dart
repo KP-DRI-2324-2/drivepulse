@@ -1,5 +1,7 @@
 import 'package:drivepulse/app/common/theme/fonts.dart';
+import 'package:drivepulse/app/common/theme/theme.dart';
 import 'package:drivepulse/app/modules/home/views/add_sensor_page.dart';
+import 'package:drivepulse/app/shared/widgets/adbanner_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../components/linechartwidget.dart';
@@ -13,7 +15,12 @@ class LineChartView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Line Chart', style: semiBoldText20),
+        foregroundColor: themeData.highlightColor,
+        backgroundColor: themeData.primaryColor,
+        title: Text(
+          'Line Chart',
+          style: boldText22.copyWith(color: themeData.highlightColor),
+        ),
         centerTitle: true,
       ),
       body: Column(
@@ -63,6 +70,7 @@ class LineChartView extends StatelessWidget {
               },
             ),
           ),
+          const AdBannerWidget(),
         ],
       ),
     );

@@ -16,6 +16,7 @@ Future<void> main() async {
       title: "Application",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.red, // Or another color
       ),

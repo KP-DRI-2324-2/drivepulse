@@ -13,7 +13,6 @@ class AddSensorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
         title: Text('Select Sensor', style: semiBoldText20),
         centerTitle: true,
       ),

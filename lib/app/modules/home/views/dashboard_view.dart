@@ -1,6 +1,7 @@
 import 'package:drivepulse/app/common/theme/fonts.dart';
 import 'package:drivepulse/app/common/theme/theme.dart';
 import 'package:drivepulse/app/modules/home/controllers/home_controller.dart';
+import 'package:drivepulse/app/shared/widgets/adbanner_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -203,11 +204,20 @@ class DashboardView extends GetView<HomeController> {
                       ),
                     ],
                   ),
+                  const Spacer(),
+                  const AdBannerWidget(),
                 ],
               ),
             ),
             const Center(
-              child: Text('Analytics Page'),
+              child: Column(
+                children: [
+                  Text('Analytics Page'),
+                  Spacer(),
+                  Spacer(),
+                  AdBannerWidget(),
+                ],
+              ),
             ),
           ],
         ),

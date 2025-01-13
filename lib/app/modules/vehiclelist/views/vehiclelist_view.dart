@@ -1,11 +1,10 @@
-import 'package:drivepulse/app/common/theme/theme.dart';
+import 'package:drivepulse/app/modules/vehiclelist/views/vehiclelist_add_view.dart';
+import 'package:drivepulse/app/modules/vehiclelist/views/vehiclelist_edit_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:drivepulse/app/common/theme/colors.dart';
-import 'package:drivepulse/app/common/theme/fonts.dart';
 import '../controllers/vehiclelist_controller.dart';
-import 'vehiclelist_add_view.dart';
-import 'vehiclelist_edit_view.dart';
+import '../../../data/model/vehicle_model.dart';
+import 'package:drivepulse/app/common/theme/fonts.dart';
 
 class VehiclelistView extends GetView<VehiclelistController> {
   const VehiclelistView({super.key});
@@ -20,89 +19,88 @@ class VehiclelistView extends GetView<VehiclelistController> {
         backgroundColor: const Color(0xFFBF0000),
         centerTitle: true,
       ),
-      body: GetBuilder<VehiclelistController>(
-        builder: (controller) {
-          return Obx(
-            () => ListView.builder(
-              itemCount: controller.vehicles.length,
-              itemBuilder: (context, index) {
-                return Card(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                  color: const Color(0xFFBF0000),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: Text(
-                                '${controller.vehicles[index].name} (${controller.vehicles[index].manufacturer})',
-                                style: boldText22.copyWith(color: Colors.white),
-                                overflow: TextOverflow.ellipsis,
+      body: Obx(
+        () {
+          if (controller.vehicles.isEmpty) {
+            return Center(
+              child: Text('No vehicles found', style: regularText16),
+            );
+          }
+          return ListView.builder(
+            itemCount: controller.vehicles.length,
+            itemBuilder: (context, index) {
+              Vehicle vehicle = controller.vehicles[index];
+              return Card(
+                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                color: const Color(0xFFBF0000),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              vehicle.name,
+                              style: boldText22.copyWith(color: Colors.white),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                vehicle.model,
+                                style: semiBoldText18.copyWith(
+                                    color: Colors.white),
                               ),
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  'Series ${controller.vehicles[index].model}',
-                                  style: semiBoldText18.copyWith(
-                                      color: Colors.white),
-                                ),
-                                PopupMenuButton<String>(
-                                  iconColor: Colors.white,
-                                  onSelected: (value) {
-                                    if (value == 'Edit') {
-                                      Get.to(
-                                          () => EditVehiclePage(index: index));
-                                    } else if (value == 'Delete') {
-                                      _deleteVehicle(context, index);
-                                    }
-                                  },
-                                  itemBuilder: (BuildContext context) {
-                                    return {'Edit', 'Delete'}
-                                        .map((String choice) {
-                                      return PopupMenuItem<String>(
-                                        value: choice,
-                                        child:
-                                            Text(choice, style: regularText14),
-                                      );
-                                    }).toList();
-                                  },
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                              PopupMenuButton<String>(
+                                iconColor: Colors.white,
+                                onSelected: (value) {
+                                  if (value == 'Edit') {
+                                    Get.to(() => EditVehiclePage(
+                                        index: index, vehicleId: vehicle.id!));
+                                  } else if (value == 'Delete') {
+                                    _deleteVehicle(context, vehicle.id!);
+                                  }
+                                },
+                                itemBuilder: (BuildContext context) {
+                                  return {'Edit', 'Delete'}
+                                      .map((String choice) {
+                                    return PopupMenuItem<String>(
+                                      value: choice,
+                                      child: Text(choice, style: regularText14),
+                                    );
+                                  }).toList();
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Expanded(
-                                child: _buildInfoChip('Year',
-                                    '${controller.vehicles[index].year}')),
-                            const SizedBox(width: 8),
-                            Expanded(
-                                child: _buildInfoChip(
-                                    'Type', controller.vehicles[index].type)),
-                            const SizedBox(width: 8),
-                            Expanded(
-                                child: _buildInfoChip('CC',
-                                    '${controller.vehicles[index].displacement}')),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                );
-              },
-            ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Expanded(
+                              child: _buildInfoChip('Year', '${vehicle.year}')),
+                          const SizedBox(width: 8),
+                          Expanded(child: _buildInfoChip('Type', vehicle.type)),
+                          const SizedBox(width: 8),
+                          Expanded(
+                              child: _buildInfoChip(
+                                  'CC', '${vehicle.displacement}')),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              );
+            },
           );
         },
       ),
@@ -133,7 +131,7 @@ class VehiclelistView extends GetView<VehiclelistController> {
     );
   }
 
-  void _deleteVehicle(BuildContext context, int index) {
+  void _deleteVehicle(BuildContext context, String vehicleId) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -150,7 +148,7 @@ class VehiclelistView extends GetView<VehiclelistController> {
             ),
             ElevatedButton(
               onPressed: () {
-                controller.deleteVehicle(index);
+                controller.deleteVehicle(vehicleId);
                 Navigator.of(context).pop();
               },
               style: ElevatedButton.styleFrom(

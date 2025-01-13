@@ -11,9 +11,14 @@ class SplashView extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
     _checkAuthentication();
-    return Scaffold(
+    return const Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
-        child: Image.asset("assets/images/logo-a.png"),
+        child: CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation<Color>(
+            Color(0xFFBF0000),
+          ),
+        ),
       ),
     );
   }
